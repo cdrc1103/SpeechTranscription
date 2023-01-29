@@ -1,0 +1,6 @@
+streamlit==1.12.2
+streamlit-webrtc==0.43.4
+python-dotenv==0.21.0
+pydub==0.25.1
+Pillow==9.2.0
+azure-cognitiveservices-speech==1.23.0
