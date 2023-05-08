@@ -1,7 +1,19 @@
 FROM python:3.9-slim
 
-#install all libraries for app
+# Create directory to store source code
+WORKDIR /app
+
+# Copy repo content
+COPY . /app
+
+# install all libraries for app
 RUN python -m pip install --upgrade pip && pip install -r requirements.txt
 
 # update; 8501 is standard for streamlit
 EXPOSE 8501
+
+# check if port is reachable
+HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+
+# set container entry point
+ENTRYPOINT ["streamlit", "run", "src/main.py", "--server.port=8501", "--server.address=0.0.0.0"]
