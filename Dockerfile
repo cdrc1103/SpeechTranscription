@@ -10,10 +10,10 @@ COPY . /app
 RUN python -m pip install --upgrade pip && pip install -r requirements.txt
 
 # update; 8501 is standard for streamlit
-EXPOSE 8501
+EXPOSE 80
 
 # check if port is reachable
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # set container entry point
-ENTRYPOINT ["streamlit", "run", "src/main.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "src/main.py", "--server.port=80", "--server.address=0.0.0.0"]
